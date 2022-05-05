@@ -45,7 +45,7 @@ npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 
 For faster runs of your tests and scripts, consider skipping ts-node's type checking by setting the environment variable `TS_NODE_TRANSPILE_ONLY` to `1` in hardhat's environment. For more details see [the documentation](https://hardhat.org/guides/typescript.html#performance-optimizations).
 
-## Documentation:
+## Resources:
 
 - L2 guide on Ethereum: https://dcbuilder.mirror.xyz/QX_ELJBQBm1Iq45ktPsz8pWLZN1C52DmEtH09boZuo0
 - Optimistic Ethereum: https://github.com/ethereum-optimism/optimistic-specs
@@ -58,3 +58,7 @@ For faster runs of your tests and scripts, consider skipping ts-node's type chec
 - Solidity API: https://docs.soliditylang.org/en/v0.8.13/
 - EIP 721: https://eips.ethereum.org/EIPS/eip-721
 - SVG viewer: https://www.svgviewer.dev
+- Alchemy: https://www.alchemy.com
+- Polygon Mumbai testnet: https://mumbai.polygonscan.com
+- Mumbai Polygon scan: https://mumbai.polygonscan.com
+- Opensea test net: https://testnets.opensea.io

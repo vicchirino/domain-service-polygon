@@ -8,12 +8,12 @@ const main = async () => {
   console.log("Contract deployed to:", domainContract.address);
   console.log("Contract deployed by: ", owner.address);
 
-  const txn = await domainContract.register("pikachu", {
+  const txn = await domainContract.register("tyranitar", {
     value: ethers.utils.parseEther("0.5"),
   });
   await txn.wait();
 
-  const address = await domainContract.getAddress("pikachu");
+  const address = await domainContract.getAddress("tyranitar");
 
   console.log("Owner of domain pikachu", address);
 

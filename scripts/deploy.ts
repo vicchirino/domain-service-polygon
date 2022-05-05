@@ -5,22 +5,32 @@
 // Runtime Environment's members available in the global scope.
 import { ethers } from "hardhat";
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+const main = async () => {
+  const domainContractFactory = await ethers.getContractFactory("Domains");
+  const domainContract = await domainContractFactory.deploy("pokemon");
+  await domainContract.deployed();
 
-  // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  console.log("Contract deployed to:", domainContract.address);
 
-  await greeter.deployed();
+  let txn = await domainContract.register("dragonite", {
+    value: ethers.utils.parseEther("0.1"),
+  });
+  await txn.wait();
+  console.log("Minted domain dragonite.pokemon");
 
-  console.log("Greeter deployed to:", greeter.address);
-}
+  txn = await domainContract.setRecord(
+    "dragonite",
+    "https://www.pokemon.com/el/pokedex/dragonite"
+  );
+  await txn.wait();
+  console.log("Set record for dragonite.pokemon");
+
+  const address = await domainContract.getAddress("dragonite");
+  console.log("Owner of domain dragonite:", address);
+
+  const balance = await ethers.provider.getBalance(domainContract.address);
+  console.log("Contract balance:", ethers.utils.formatEther(balance));
+};
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
